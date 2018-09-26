@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button } from "antd";
 import { connect } from 'react-redux';
 import increaseAction from '../action';
@@ -14,10 +14,10 @@ class Counter extends Component{
         );
     }
 }
-Counter.PropTypes = {
-    value:PropTypes.number.isRequired,
-    onIncreaseClick:PropTypes.func.isRequired,
-}
+// Counter.PropTypes = {
+//     value:PropTypes.number.isRequired,
+//     onIncreaseClick:PropTypes.func.isRequired,
+// }
 // Map Redux state to component props
 function mapStateToProps(state) {
     return {
