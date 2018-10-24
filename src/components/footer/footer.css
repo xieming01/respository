@@ -1,0 +1,13 @@
+.footer{
+    background-color: black;
+    text-align: center;
+    font-size: 3px;
+    line-height: 15px;
+    margin-top: 25px;
+    padding:40px 80px;  
+    color:rgba(255, 255, 255, 0.65);
+    position: absolute;
+    bottom:0px;
+    width:100%;
+
+}
