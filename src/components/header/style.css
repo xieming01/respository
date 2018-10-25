@@ -1,0 +1,19 @@
+.header{
+    line-height: 50px;
+    /* min-width: 1800px; */
+    background-color: white
+}
+.logo{
+    font-size:x-large;
+    color:red;
+    font-family: 'Courier New', Courier, monospace;
+}
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}

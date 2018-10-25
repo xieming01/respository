@@ -1,2 +1,2 @@
-import HeadNav from './headNav';
-export  {HeadNav};
+import Head from './head.js';
+export default Head;

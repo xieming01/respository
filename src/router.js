@@ -8,7 +8,7 @@ import DefaultLayout from './layouts/DefaultLayout/DefaultLayout.js';
 class RouterWrap extends Component{
     render(){
         return(
-            <div id="router">
+            <div id="router"  >
                 <BrowserRouter>
                     <Switch>
                         <Route path="/home" component={DefaultLayout} />

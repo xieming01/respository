@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import {createStore,applyMiddleware} from 'redux';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,7 +14,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import counter from './component/reducer';
 import App  from './app.js';
 // import registerServiceWorker from './registerServiceWorker';
-
+import store from './store';
 
 // const store = createStore(
 //     counter,
@@ -23,16 +23,17 @@ import App  from './app.js';
  const render = Component =>{
      ReactDOM.render(
          <AppContainer>
-             {/* <Provider store={store}> */}
+             <Provider store={store}>
                 <BrowserRouter>
                     <Component />
                 </BrowserRouter>
-             {/* </Provider> */}
+             </Provider>
          </AppContainer>,
          document.getElementById('root')
      )
  };
 render(App);
+console.log(store.getState);
  if(module.hot){
      module.hot.accept('./app.js',()=>{
          render(App);

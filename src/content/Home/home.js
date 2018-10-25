@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import { List, Avatar, Icon } from 'antd';
-export default class Home extends Component {
+import { connect } from 'react-redux';
+import {pageChange} from './action';
+  class Home extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            currentPage:1
+        }
+    }
+    componentDidMount=()=>{
+        this.props.pageChange(1);
+    }
     render() {
-        const listData = [{
-            href: 'http://ant.design',
-            title: `ant design part `,
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content: 'We supply a series of design principles, practical patterns and high quality de',
-        }];
+        const listData =  [];
+        for (let i = 0; i < 23; i++) {
+            listData.push({
+                href: 'http://ant.design',
+                title: `ant design part ${i}`,
+                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+            });
+        }
         const IconText = ({ type, text }) => (
         <span>
             <Icon type={type} style={{ marginRight: 8 }} />
@@ -16,18 +30,21 @@ export default class Home extends Component {
         </span>
 );    
         return (
-            <div className="article"> 
+            <div className="article" style={{ "width": "68%", 'marginLeft': '16%', 'marginTop':"10px","backgroundColor":"white"}}> 
                 <List
                     itemLayout="vertical"
                     size="large"
+                    bordered={true}
                     pagination={{
                     onChange: (page) => {
-                        console.log(page);
+                        this.props.pageChange(page)
                     },
                     pageSize: 3,
+                    showQuickJumper:true,
+                    current:  this.state.currentPage,
                     }}
                      dataSource={listData}
-                footer={<div><b>ant design</b> footer part</div>}
+                // footer={<div><b>ant design</b> footer part</div>}
                 renderItem={item => (
                 <List.Item
                     key={item.title}
@@ -47,3 +64,17 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapStateTopProps =(state)=>{
+    return{
+        data:state.page
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        pageChange:(page)=>{
+            dispatch(pageChange(page))
+        }
+    }
+}
+export default connect(mapStateTopProps, mapDispatchToProps)(Home);
