@@ -22,18 +22,18 @@ import store from './store';
 // ); 
  const render = Component =>{
      ReactDOM.render(
-         <AppContainer>
+     
              <Provider store={store}>
-                <BrowserRouter>
+                
                     <Component />
-                </BrowserRouter>
+              
              </Provider>
-         </AppContainer>,
+     ,
          document.getElementById('root')
      )
  };
 render(App);
-console.log(store.getState);
+// console.log(store.getState);
  if(module.hot){
      module.hot.accept('./app.js',()=>{
          render(App);

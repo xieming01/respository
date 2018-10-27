@@ -1,5 +1,6 @@
 import { REQ_STARTED, REQ_SUCCESS, REQ_FAILURE } from './actionType';
 import axios from 'axios';
+import '../../mock';
 export const reqPageStarted =(page)=>({
     type:REQ_STARTED,
     loading:true,
@@ -21,14 +22,10 @@ export const pageChange = (page)=>{
     let pageSize = 3;
     let pages = page ? page :1 ;
     return(dispatch)=>{
-        const apiurl =`https://cnodejs.org/api/v1/topics`;
+        const apiurl =`/data`;
         dispatch(reqPageStarted(page));
         axios.get(apiurl,{
-            params:{
-                page:pages,
-                limit:pageSize,
-                tab:'topics',
-            }
+          'dataType':'json'
         }).then(function (ret) {
             if(ret.status !== 200){
                 throw new Error('获取请求失败！');

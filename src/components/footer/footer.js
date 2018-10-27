@@ -8,7 +8,9 @@ class Footer extends Component {
             <div className="footer">
                 <Row>
                     <Col span={24}>
-                        CNode - Created By duziten | Copyright © 2018-2-1<br />
+                        CNode - Created By duziten | Copyright © 2018-2-1
+                        
+                        <br />
                         联系人QQ：925187509
                     </Col>
                 </Row>

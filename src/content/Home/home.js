@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon } from 'antd';
+import { List, Avatar, Icon,Spin } from 'antd';
 import { connect } from 'react-redux';
 import {pageChange} from './action';
   class Home extends Component {
@@ -10,19 +10,27 @@ import {pageChange} from './action';
         }
     }
     componentDidMount=()=>{
+        // console.log(this.props);
         this.props.pageChange(1);
     }
+    //   shouldComponentUpdate=(nextProps)=>{
+    //     if (nextProps.location.state.data){
+    //         return true
+    //     }
+    // }
     render() {
-        const listData =  [];
-        for (let i = 0; i < 23; i++) {
-            listData.push({
-                href: 'http://ant.design',
-                title: `ant design part ${i}`,
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-            });
-        }
+        const listData = this.props.data.result;
+        // console.log(this.props.data.result);
+        console.log(listData)
+        // for (let i = 0; i < 23; i++) {
+        //     listData.push({
+        //         href: 'http://ant.design',
+        //         title: `ant design part ${i}`,
+        //         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+        //         description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+        //         content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+        //     });
+        // }
         const IconText = ({ type, text }) => (
         <span>
             <Icon type={type} style={{ marginRight: 8 }} />
@@ -31,17 +39,19 @@ import {pageChange} from './action';
 );    
         return (
             <div className="article" style={{ "width": "68%", 'marginLeft': '16%', 'marginTop':"10px","backgroundColor":"white"}}> 
+                <Spin spinning={this.props.data.loading}>
                 <List
                     itemLayout="vertical"
                     size="large"
                     bordered={true}
                     pagination={{
                     onChange: (page) => {
-                        this.props.pageChange(page)
+                        this.props.pageChange(page);
+                         
                     },
                     pageSize: 3,
                     showQuickJumper:true,
-                    current:  this.state.currentPage,
+                        current: this.props.data.page,
                     }}
                      dataSource={listData}
                 // footer={<div><b>ant design</b> footer part</div>}
@@ -60,6 +70,7 @@ import {pageChange} from './action';
                 </List.Item>
                 )}
             />
+            </Spin>
             </div>
         )
     }
@@ -73,7 +84,7 @@ const mapStateTopProps =(state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         pageChange:(page)=>{
-            dispatch(pageChange(page))
+            dispatch(pageChange(page));
         }
     }
 }

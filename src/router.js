@@ -14,7 +14,7 @@ class RouterWrap extends Component{
                         <Route path="/home" component={DefaultLayout} />
                         {/*<Route path='*' component={LoginUser} />*/}
                         {/*<Redirect from='*' to='/404' />*/}
-                        <Route path="/" render={()=><Redirect to="/home"/>} />
+                        <Route path="/" render={()=><Redirect to="/home/all"/>} />
                     </Switch>
                 </BrowserRouter>
             </div>

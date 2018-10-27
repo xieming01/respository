@@ -16,10 +16,11 @@ class DefaultLayout extends Component{
             <div>
                 <Head location={this.props.location} history={this.props.history} match={this.props.match}/>
                 <div>
-                    <Route path={this.props.match.url + '/all'} component={Home} exact />
-                    <Route path={this.props.match.url + '/about'} component={About} />
-                    <Route path={this.props.match.url + '/article'} component={Article} />
-                    <Route path={this.props.match.url + '/resource'} component={Resource} />
+                    <Route path={this.props.match.url + '/all'} component={Home} exact/>
+                    <Route path={this.props.match.url + '/'} component={Home} exact/>
+                    <Route path={this.props.match.url + '/about'} component={About}   />
+                    <Route path={this.props.match.url + '/article'} component={Article}   />
+                    <Route path={this.props.match.url + '/resource'} component={Resource}  />
                 </div>
                 <Footer/>
             </div>

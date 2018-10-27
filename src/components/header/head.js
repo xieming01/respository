@@ -49,7 +49,7 @@ class Head extends Component{
                         <Menu className='menu_title'
                             onClick={this.handleClick.bind(this)}
                             mode="horizontal"
-                            selectedKeys={this.state.current}
+                            defaultSelectedKeys={this.state.current}
                         >
                             <Menu.Item key='all'>  <Link to="/home/all">首页</Link></Menu.Item>
                             <Menu.Item key='about'>   <Link to="/home/about">关于我</Link> </Menu.Item>
