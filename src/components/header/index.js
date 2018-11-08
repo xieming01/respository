@@ -1,2 +1,4 @@
 import Head from './head.js';
-export default Head;
+import User from './user';
+import RegistrationForm from './userSetting'
+export { Head, User, RegistrationForm};

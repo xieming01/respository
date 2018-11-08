@@ -20,7 +20,8 @@
 // export default createStore(reducers, {}, storeEnhancers);
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import reducer from '../src/content/Home/reducer';
+import { reducer, reducer_detail} from '../src/content/Home/reducer';
+import reducerLogin from '../src/components/header/reducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
@@ -30,7 +31,9 @@ import promiseMiddleware from 'redux-promise';
 //合并reducer
 const reducers = combineReducers({
       "page":reducer,
-    // detail: detailReducer
+      "list": reducer,
+       "login": reducerLogin,
+       "detail": reducer_detail
 });
 const store = createStore(
     reducers,

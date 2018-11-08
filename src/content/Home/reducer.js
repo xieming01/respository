@@ -1,5 +1,8 @@
 import { REQ_STARTED, REQ_SUCCESS, REQ_FAILURE } from './actionType';
  const defaultState= {"loading":false,"result":[],"error":null,page:1};
+const detailState = {
+    "sources": [],
+    "loading": true}
  const reducer = (state=defaultState,action)=>{
      switch (action.type) {
          case REQ_STARTED:
@@ -12,4 +15,16 @@ import { REQ_STARTED, REQ_SUCCESS, REQ_FAILURE } from './actionType';
              return state;
      }
  }
- export default reducer
+const reducer_detail = (state = detailState, action) => {
+    switch (action.type) {
+        case REQ_STARTED:
+            return { ...state, loading: true ,}
+        case REQ_SUCCESS:
+            return { ...state, loading: false, sources: action.result }
+        case REQ_FAILURE:
+            return { ...state, loading: false, error: action.error }
+        default:
+            return state;
+    }
+}
+export { reducer, reducer_detail}

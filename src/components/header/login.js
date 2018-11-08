@@ -1,50 +1,59 @@
 import React,{Component} from 'react';
-import {   Form, Icon, Input, Button, Checkbox  } from 'antd';
-
+import {   Form, Icon, Input, Button, Checkbox , Spin,message } from 'antd';
+import { login, initDefaultState } from './action';
+import { connect } from 'react-redux';
 const FormItem = Form.Item;
 class Login extends Component{
       constructor(props){
           super(props);
           this.state={
-              visible:false
+              loadding:false,
+              sign:true,
+            //   defaultFailure:true
           }
       }
-    
+    handleChange=(values)=>{
+         this.props.handleChange(values);
+         
+    }
      handleSubmit=(e)=>{
          e.preventDefault();
          this.props.form.validateFields((err, values) => {
              if (!err) {
-                //  console.log('Received values of form: ', values);
-                this.props.showModal();    
+                 this.setState({
+                     loadding:true,
+                      
+                 });
+                this.handleChange(values);
              }
          });
      }
+    componentWillReceiveProps =(nextProps)=>{
+         
+             if (nextProps.data.login_in !== this.props.data.login_in) {
+            // setTimeout(() => {
+            if (nextProps.data.login_in){
+                this.props.showModal(nextProps.data.result);
+            }
+        };
+        if(nextProps.data.sign){
+            this.setState({
+                sign:false,
+                loadding:false,
+                // defaultFailure: !nextProps.data.sign ? false : true
+            });
+            // this.props.initDefaultState();
+        }
+    }
+     
      render(){
          const { getFieldDecorator } = this.props.form;
-        //  // 左侧表单Item的布局设置
-        //  const formItemLayout = {
-        //      wrapperCol: {
-        //          xs: { span: 24,offset:4 },
-        //          sm: { span: 16 },
-        //          md: { span: 16 },
-        //      },
-        //  };
-        //  // 表单尾部的布局样式：Button
-        //  const tailFormItemLayout = {
-        //      wrapperCol: {
-        //          xs: {
-        //              span: 24,
-        //              offset: 4,
-        //          },
-        //          sm: {
-        //              span: 8,
-        //              offset: 4,
-        //          },
-        //      },
-        //  };
+         let title = this.props.data.sign  ?  this.props.data.detail : this.props.data.detail;
+         let loaded = !this.props.data.login_in ? this.state.loadding : !this.props.data.login_in;
+         loaded = this.state.sign ? (this.state.sign ? loaded : false): false;
          return(
              <div>
-                 
+                 <Spin tip={title} spinning={loaded}>
                  <Form onSubmit={this.handleSubmit.bind(this)} className="login">
                      <FormItem  className="user_name" style={{"marginTop":'5%','marginLeft':'15%','width':'70%'}}>
                          {getFieldDecorator('usrName', {
@@ -72,9 +81,25 @@ class Login extends Component{
                          <Button type="primary" htmlType="submit" style={{'width':'40%','marginLeft':'30%'}}>Login</Button>
                      </FormItem>
                  </Form>
-                
+                </Spin>
              </div>
          )
      }
 }
-export default Form.create()(Login);
+// export default ;
+const mapStateTopProps = (state) => {
+    return {
+        data: state.login
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChange: (values) => {
+            dispatch(login(values));
+        },
+        initDefaultState:()=>{
+            dispatch(initDefaultState());
+        }
+    }
+}
+export default connect(mapStateTopProps, mapDispatchToProps)(Form.create()(Login));

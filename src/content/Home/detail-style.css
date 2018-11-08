@@ -1,0 +1,7 @@
+.markdown-box{
+  padding: 20px 0;
+  border-top: 1px solid #e1e1e1;
+}
+.markdown-box img{
+  max-width: 100%;
+}

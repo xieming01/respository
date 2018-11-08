@@ -2,9 +2,10 @@ import React,{Component} from 'react';
 import {Route} from 'react-router-dom';
 // import {Button} from 'antd';
 import './DefaultLayout.less';
-import Head from '../../components/header';
-import {Footer} from '../../components/footer';
-import { About, Article, Home, Resource } from '../../content';
+import { Head, User, RegistrationForm} from '../../components/header';
+// import {Footer} from '../../components/footer';
+import { About, Article, Home, Resource ,HomeDetail} from '../../content';
+
 class DefaultLayout extends Component{
     constructor(props) {
         super(props);
@@ -21,8 +22,11 @@ class DefaultLayout extends Component{
                     <Route path={this.props.match.url + '/about'} component={About}   />
                     <Route path={this.props.match.url + '/article'} component={Article}   />
                     <Route path={this.props.match.url + '/resource'} component={Resource}  />
+                    <Route path={this.props.match.url + '/user'} component={User} />
+                    <Route path={this.props.match.url + '/setting'} component={RegistrationForm} />
+                    <Route path={this.props.match.url + '/all/detail'} component={HomeDetail} />
                 </div>
-                <Footer/>
+                {/* <Footer/> */}
             </div>
              
         )

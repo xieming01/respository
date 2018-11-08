@@ -2,12 +2,21 @@
     background-color: black;
     text-align: center;
     font-size: 3px;
-    line-height: 26px;
+    line-height: 25px;
     margin-top: 10px;
     padding:40px 80px;  
     color:rgba(255, 255, 255, 0.65);
-    position: absolute;
+    /* position: absolute; */
+    clear: both;
     bottom:0px;
     width:100%;
+     /* text-align: center;
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.65);
+  padding:40px 80px;
+  line-height: 30px;
+  margin-top: 15px;
+  width: 100%;
+  position: absolute; */
 
 }

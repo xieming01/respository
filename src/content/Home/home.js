@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, Avatar, Icon,Spin } from 'antd';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {pageChange} from './action';
   class Home extends Component {
@@ -18,6 +19,9 @@ import {pageChange} from './action';
     //         return true
     //     }
     // }
+    componentWillReceiveProps =() =>{
+        console.log(this.props.data.result);
+    }
     render() {
         const listData = this.props.data.result;
         // console.log(this.props.data.result);
@@ -36,7 +40,7 @@ import {pageChange} from './action';
             <Icon type={type} style={{ marginRight: 8 }} />
                 {text}
         </span>
-);    
+        );    
         return (
             <div className="article" style={{ "width": "68%", 'marginLeft': '16%', 'marginTop':"10px","backgroundColor":"white"}}> 
                 <Spin spinning={this.props.data.loading}>
@@ -47,23 +51,22 @@ import {pageChange} from './action';
                     pagination={{
                     onChange: (page) => {
                         this.props.pageChange(page);
-                         
                     },
                     pageSize: 3,
                     showQuickJumper:true,
-                        current: this.props.data.page,
+                    current: this.props.data.page,
                     }}
                      dataSource={listData}
                 // footer={<div><b>ant design</b> footer part</div>}
                 renderItem={item => (
                 <List.Item
-                    key={item.title}
+                    key={[item.title]}
                     actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
                     extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
                 >
                  <List.Item.Meta
-                    avatar={<Avatar src={item.avatar} />}
-                    title={<a href={item.href}>{item.title}</a>}
+                    avatar={<Avatar src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+                    title={<Link to="/home/all/detail">{item.title}</Link>}
                     description={item.description}
                 />
                     {item.content}

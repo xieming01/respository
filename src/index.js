@@ -15,7 +15,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App  from './app.js';
 // import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-
+import { Login_STARTED  } from './components/header/actionType';
 // const store = createStore(
 //     counter,
 //     applyMiddleware(thunk,promiseMiddleware,logger)
@@ -33,6 +33,17 @@ import store from './store';
      )
  };
 render(App);
+function listener() {
+    const current = store.getState();
+    // if(current.login.sign){
+    //     store.dispatch({
+    //         type: Login_STARTED,
+    //         login_in: false,
+    //         detail: "登录中"
+    //     })
+    // }
+}
+store.subscribe(listener);
 // console.log(store.getState);
  if(module.hot){
      module.hot.accept('./app.js',()=>{
