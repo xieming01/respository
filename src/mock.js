@@ -38,3 +38,50 @@ Mock.mock(
         }
     }
 )
+Mock.mock(
+    '/comment', {
+        "data": {
+            "data|1-20": [{
+                "href": 'http://ant.design',
+                "title|1-6": `antd`,
+                "avatar": "https://zos.alipayobjects.com",
+                "description": 'Ant Design, a design language for',
+                "content": 'We supply a series of design '
+            }]        
+        }
+    }
+)
+Mock.mock(
+    'http://10.0.0.100:8080/NetApi/public/?r=TwoView/getTwoTable', {
+        "data": {
+             
+             "msg":{
+                 "xxx": [{
+                     "title": '姓名',
+                     "dataIndex": 'name',
+                     "key": 'name',
+                 }, {
+                     "title": '年龄',
+                     "dataIndex": 'age',
+                     "key": 'age',
+                 }, {
+                     "title": '住址',
+                     "dataIndex": 'address',
+                     "key": 'address',
+                 }],
+                 "yyy": [{
+                     "key": '1',
+                     "name": '胡彦斌',
+                     "age": 32,
+                     "address": '西湖区湖底公园1号'
+                 }, {
+                     "key": '2',
+                     "name": '胡彦祖',
+                     "age": 42,
+                     "address": '西湖区湖底公园1号'
+                 }]
+             },
+    },
+    "ret": 200   
+    }
+)

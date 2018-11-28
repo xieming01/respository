@@ -75,7 +75,7 @@ class ListItem extends Component{
                         onChange: (page) => {
                             this.props.listPageChange(page);
                         },
-                        pageSize: 6,
+                        pageSize: 8,
                         showQuickJumper: true,
                         current: 1,
                     }}

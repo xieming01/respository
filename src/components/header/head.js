@@ -100,7 +100,7 @@ class Head extends Component{
                             <span style={{ "fontSize": 15 }}>&nbsp;&nbsp;admin</span>
                         </Col>
                         :
-                        <Col><Avatar style={{ "backgroundColor": "red", 'marginLeft': '40%' }} icon="user" onClick={this.showLogin.bind(this)} /></Col>
+                        <Col><Avatar style={{ "backgroundColor": "red", 'marginLeft': '40%' }} icon="user" onClick={this.showLogin.bind(this)}  className="login"/></Col>
                     }
                     
                 </Row>
@@ -114,6 +114,7 @@ class Head extends Component{
                             visible: false
                         })}}
                     destroyOnClose={true}
+                    // getContainer={() => Row}
                 //  
                 >
                        <Login showModal={this.showModal.bind(this)}/> 

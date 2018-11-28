@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import {Route} from 'react-router-dom';
+// import { Scrollbars } from 'react-custom-scrollbars'
 // import {Button} from 'antd';
 import './DefaultLayout.less';
-import { Head, User, RegistrationForm} from '../../components/header';
+import { Head, User, RegistrationForm, AlertManage} from '../../components/header';
 // import {Footer} from '../../components/footer';
 import { About, Article, Home, Resource ,HomeDetail} from '../../content';
 
@@ -16,6 +17,7 @@ class DefaultLayout extends Component{
             // <div id="DefaultLayout"><span><Button>Hello World</Button></span> </div>
             <div>
                 <Head location={this.props.location} history={this.props.history} match={this.props.match}/>
+                
                 <div>
                     <Route path={this.props.match.url + '/all'} component={Home} exact/>
                     <Route path={this.props.match.url + '/'} component={Home} exact/>
@@ -25,8 +27,10 @@ class DefaultLayout extends Component{
                     <Route path={this.props.match.url + '/user'} component={User} />
                     <Route path={this.props.match.url + '/setting'} component={RegistrationForm} />
                     <Route path={this.props.match.url + '/all/detail'} component={HomeDetail} />
+                    <Route path={this.props.match.url + '/alertmessage'} component={AlertManage} />
                 </div>
                 {/* <Footer/> */}
+               
             </div>
              
         )
