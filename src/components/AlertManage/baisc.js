@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Select, Row, Col } from 'antd';
+import { Form, Input, Select, Row, Col, message } from 'antd';
 // import PropTypes from "prop-types";
 const Option = Select.Option;
 //告警类型所对应的供选择项
@@ -76,14 +76,18 @@ class Basic extends React.Component {
         }
        
     }
-    onSubmit=(dataSource)=>{
+    onSubmit=()=>{
+        let obj ={}
         this.props.form.validateFields((err, fieldsValue) => {
            if(!err){
-               var ss = this.state;
-                
+               obj = fieldsValue;
+           }else{
+               message.error("名称不能为空");
+               obj=false
            }
 
-        })
+        });
+        return obj
     }
     render() {
         // const { cities } = this.state;
@@ -100,6 +104,7 @@ class Basic extends React.Component {
                 xs: { span: 24 },
                 sm: { span: 16 },
                 md: { span: 16 },
+                // margainTop:"-20px"
             },
         };
         return (
@@ -146,10 +151,10 @@ class Basic extends React.Component {
                                 this.state.type.key === 'value' ?
                                     <Form.Item
                                         {...formItemLayout}
-
                                         label="告警对象"
+                                        className="obj_key"
                                     >
-                                        <Input.Group >
+                                        <Input.Group  style={{"marginTop":"-18px"}}>
                                                 {/* <Select
                                                     // mode="tags" //网络和应用选择栏
                                                     value={this.state.obj ? this.state.obj : emergency_obj.value[0]}
@@ -215,7 +220,7 @@ class Basic extends React.Component {
                                                             style={{ width: '100%'  }}
                                                             optionFilterProp="children"
                                                         >
-                                                            {(emergency_obj.value).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
+                                                        {(emergency_name.net).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
                                                         </Select>
                                                     )}
                                                 </Form.Item>
@@ -250,7 +255,7 @@ class Basic extends React.Component {
                                                                 optionFilterProp="children"
                                                                 style={{ width: '100%'  }}
                                                             >
-                                                                {(emergency_obj.value).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
+                                                            {(emergency_name.app).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
                                                             </Select>
                                                         )}
                                                     </Form.Item>
@@ -261,7 +266,7 @@ class Basic extends React.Component {
                                             </Input.Group>
 
                                         
-                                    </Form.Item>
+                                    </Form.Item >
                                     :
                                     (this.state.type.key === 'line' ?
                                      
@@ -270,7 +275,7 @@ class Basic extends React.Component {
 
                                             label="告警对象"
                                         >
-                                            <Input.Group compact>
+                                            <Input.Group compact style={{ "marginTop": "-18px" }}>
                                             {/* <Form layout="inline"> */}
                                                 {/* <Select
                                                     // mode="tags" //节点和全网流量选择栏
@@ -300,7 +305,7 @@ class Basic extends React.Component {
                                                             style={{ width: '100%' }}
                                                             optionFilterProp="children"
                                                         >
-                                                            {(emergency_obj.value).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
+                                                        {(emergency_obj.line).map((item, index) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
                                                         </Select>
                                                     )}
                                                 </Form.Item>
@@ -335,7 +340,7 @@ class Basic extends React.Component {
                                                                 style={{ width: '100%' }}
                                                                 optionFilterProp="children"
                                                                 >
-                                                                    {(emergency_obj.value).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
+                                                                {(emergency_node.node).map((item) => <Option key={item.key} value={item.key}>{item.label}</Option>)}
                                                                 </Select>
                                                             )}
                                                         </Form.Item>

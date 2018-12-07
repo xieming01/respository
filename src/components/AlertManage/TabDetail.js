@@ -1,12 +1,13 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import { Tabs, Button, Divider,Row,Col  } from 'antd';
+import { Tabs, Button, Divider ,  } from 'antd';
 import Basic from './baisc';
 import TimeSelect from './timeSelct';
 import Rule from './rule';
 import Email from './email';
 // import PropTypes from "prop-types";
 const TabPane = Tabs.TabPane;
+var dataAll={};
 class TabDetail extends React.Component{
     constructor(props){
         super(props);
@@ -31,49 +32,57 @@ class TabDetail extends React.Component{
             activeKey:key
         })
     }
-    // getInstance = (instance) =>{
-    //     return instance
-    // }
     onButtonClick = (key) =>{
         switch (key) {
             case "cancle":
+               dataAll={};
                this.props.onClose();
                 break;
             case "firstNext":
-                this.childCp.onSubmit({});
-                this.setState({
+                dataAll.basic = this.childCp.onSubmit();
+                if (dataAll.basic){
+                  this.setState({
                     activeKey: '2'
-                });
+                });  
+                };
                 break;
             case "firstLast":
+                dataAll.basic={};
                 this.setState({
                     activeKey: '1'
                 });
                 break;
             case "secondNext":
-                
-                this.setState({
+                dataAll.time=this.childCp2.onSubmit();
+                if(dataAll.time){
+                   this.setState({
                     activeKey: '3'
-                });
+                }); 
+                };
                 break;
             case "secondLast":
+                dataAll.time={};
                 this.setState({
                     activeKey: '2'
                 });
                 break;
             case "thirdNext":
-                this.childCpt.onSubmit({});
+                dataAll.rule = this.childCpt3.onSubmit();
                 this.setState({
                     activeKey: '4'
                 });
                 break;
             case "thirdLast":
+                dataAll.rule = {};
                 this.setState({
                     activeKey: '3'
                 });
                 break;
             case "save":
-                this.childCps.onSubmit({});
+                dataAll.email=this.childCps.onSubmit();
+                dataAll.basic = this.childCp.onSubmit();
+                dataAll.time = this.childCp2.onSubmit();
+                dataAll.rule = this.childCpt3.onSubmit();
                 this.props.onClose();
                 break;
             default:
@@ -113,8 +122,8 @@ class TabDetail extends React.Component{
                     <TabPane tab="基本属性" key="1" >
                         <Basic wrappedComponentRef={(constance) => { this.subTable = constance }} getInstance={(childCp) => { this.childCp = childCp; }}/>
                     </TabPane>
-                    <TabPane tab="时间选择" key="2"><TimeSelect /></TabPane>
-                    <TabPane tab="告警规则" key="3"><Rule wrappedComponentRef={(constancet) => { this.subTablet = constancet }} getInstance={(childCpt) => { this.childCpt = childCpt; }}/></TabPane>
+                    <TabPane tab="时间选择" key="2"><TimeSelect wrappedComponentRef={(constance2) => { this.subTable2 = constance2 }} getInstance={(childCp2) => { this.childCp2 = childCp2; }}/></TabPane>
+                    <TabPane tab="告警规则" key="3"><Rule wrappedComponentRef={(constancet3) => { this.subTablet3 = constancet3 }} getInstance={(childCpt3) => { this.childCpt3 = childCpt3; }}/></TabPane>
                     <TabPane tab="邮件通知" key="4"><Email wrappedComponentRef={(constances) => { this.subTables = constances }} getInstance={(childCps) => { this.childCps = childCps; }}/></TabPane>
                 </Tabs>
                 <Divider style={{"marginTop":"0px"}} />

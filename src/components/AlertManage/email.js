@@ -24,14 +24,16 @@ class Email extends Component {
             status: true
         })
     }
-    onSubmit = (dataSource) => {
+    onSubmit = () => {
+        let obj = {};
         this.props.form.validateFields((err, fieldsValue) => {
+            
             if (!err) {
-                var ss = this.state;
-
+                obj = fieldsValue
             }
-
-        })
+           
+        });
+        return obj
     }
     render() {
         const { getFieldDecorator } = this.props.form;      
@@ -59,7 +61,7 @@ class Email extends Component {
                             {...formItemLayout}
                             label="通知对象:"
                             >
-                                {getFieldDecorator('through_put', {
+                                {getFieldDecorator('obj', {
                                     initialValue: this.state.namePeople ? this.state.namePeople : name[0],
                                 })(
                                     <Select
@@ -76,7 +78,7 @@ class Email extends Component {
                                 label= "启用通知:"
                                 {...formItemLayout}
                             >
-                                {getFieldDecorator('remember', {
+                                {getFieldDecorator('inform', {
                                     valuePropName: 'checked',
                                     initialValue: this.state.status ? this.state.status :false,
                                 })(

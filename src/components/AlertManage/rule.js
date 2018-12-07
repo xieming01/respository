@@ -166,8 +166,8 @@ class Rule extends Component {
             deleteKey: parseInt(index,10)
         })
     }
-    onSubmit = (dataSource) => {
-
+    onSubmit = () => {
+        return value;
     }
 
     rule_form = (index, is_change,value)=>{
