@@ -88,7 +88,7 @@ class ListItem extends Component{
                             <Skeleton avatar  title={false} loading={false}>
                                 <List.Item.Meta
                                     avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                    title={<a href="https://ant.design">{item.title}</a>}
+                                    title={<a href="https://192.168.233.137:3000/home/alertmessage">{item.title}</a>}
                                     description="Ant Design, a design language"
                                 />
                                 <div style={{ "marginLeft": "45px" }}>{item.date}</div>
