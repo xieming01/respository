@@ -4,7 +4,7 @@ import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 // import { HeadNav} from  './components/header';
 // import { About, Article, Home, Resource } from './content';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout.js';
-import {Footer} from '../src/components/footer';
+// import {Footer} from '../src/components/footer';
 
 
 class RouterWrap extends Component{
@@ -21,7 +21,7 @@ class RouterWrap extends Component{
                         <Route path="/" render={()=><Redirect to="/home/all"/>} />
                         
                     </Switch>
-                    <Footer />
+                    {/* <Footer /> */}
                     </div>
                 </BrowserRouter>
             </div>

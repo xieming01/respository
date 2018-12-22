@@ -5,7 +5,7 @@ step 的四种状态
 import React from 'react';
 import {
     // Steps,
-    Button,
+    // Button,
     // Radio,
 } from 'antd';
 // import { Button } from 'antd/lib/radio';
@@ -324,7 +324,7 @@ class CircleTest extends React.Component {
         return (
             <div>
                 <canvas onMouseDown={this.approveMouseDonwn.bind(this)} 
-                    style={{ "margainTop": "50px" }}
+                    style={{ "margainTop": "100px" }}
                     onMouseUp={this.approveMouseUp.bind(this)}
                     onMouseLeave={this.approveMouseUp.bind(this)}
                     width="800"
@@ -333,7 +333,7 @@ class CircleTest extends React.Component {
                         this.canvas = c;
                     }} >
                 </canvas>
-                <Button type="primary" onClick={this.clickMe.bind(this)}>Button</Button>
+                {/* <Button type="primary" onClick={this.clickMe.bind(this)}>Button</Button> */}
 
 
             </div>
@@ -355,13 +355,13 @@ class FlowStatus extends React.Component {
 
     render() {
         return (
-            <div>
+            <div >
                 {/* <canvas  width="500px" height="300px"
                     ref={(c) => {
                         this.canvas = c;
                     }} >
                 </canvas> */}
-                <CircleTest />
+                <CircleTest  />
             </div>
         );
     }

@@ -6,7 +6,7 @@ import './DefaultLayout.less';
 import { Head, User, RegistrationForm, AlertManage} from '../../components/header';
 // import {Footer} from '../../components/footer';
 import { About, Article, Home, Resource ,HomeDetail} from '../../content';
-
+import {Footer}  from '../../components/footer'
 class DefaultLayout extends Component{
     constructor(props) {
         super(props);
@@ -15,10 +15,10 @@ class DefaultLayout extends Component{
     render(){
         return(
             // <div id="DefaultLayout"><span><Button>Hello World</Button></span> </div>
-            <div>
-                <Head location={this.props.location} history={this.props.history} match={this.props.match}/>
+            <div style={{ "display": "flex","minHeight":"100vh","flexDirection":"column"}}>
+                <Head location={this.props.location} history={this.props.history} match={this.props.match} />
                 
-                <div>
+                <div style={{"flex":1}}>
                     <Route path={this.props.match.url + '/all'} component={Home} exact/>
                     <Route path={this.props.match.url + '/'} component={Home} exact/>
                     <Route path={this.props.match.url + '/about'} component={About}   />
@@ -29,7 +29,7 @@ class DefaultLayout extends Component{
                     <Route path={this.props.match.url + '/all/detail'} component={HomeDetail} />
                     <Route path={this.props.match.url + '/alertmessage'} component={AlertManage} />
                 </div>
-                {/* <Footer/> */}
+                <Footer style={{}}/>
                
             </div>
              
